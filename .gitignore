@@ -1,0 +1,8 @@
+# Ignore sensitive files and environment variables
+config.js
+.env
+.env.local
+.DS_Store
+node_modules/
+*.log
+.qodo/
