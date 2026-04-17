@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <main class="app" aria-label="Weather Report App">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand__logo" aria-hidden="true">WR</div>
+          <div class="brand__text">
+            <h1 class="brand__title">Weather Report</h1>
+            <p class="brand__subtitle">Real-time weather + 5-day forecast</p>
+          </div>
+        </div>
+
+        <div class="toggles">
+          <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme">
+            <span class="icon" aria-hidden="true">◐</span>
+          </button>
+
+          <button id="unitToggle" class="pill-btn" type="button" aria-label="Toggle units">
+            <span id="unitLabel">°C</span>
+            <span class="pill-btn__sep" aria-hidden="true">/</span>
+            <span class="pill-btn__muted">°F</span>
+          </button>
+        </div>
+      </header>
+
+      <section class="card" aria-label="Weather search and results">
+        <div class="search">
+          <label class="sr-only" for="cityInput">City name</label>
+          <input
+            id="cityInput"
+            class="search__input"
+            type="text"
+            placeholder="Search city (e.g., Bengaluru)"
+            autocomplete="off"
+          />
+
+          <button id="searchBtn" class="primary-btn" type="button">
+            Search
+          </button>
+
+          <button id="geoBtn" class="secondary-btn" type="button">
+            Use my location
+          </button>
+        </div>
+
+        <p id="error" class="error" role="alert" aria-live="polite"></p>
+
+        <div id="current" class="current" hidden>
+          <div class="current__header">
+            <div>
+              <h2 id="cityName" class="current__city">—</h2>
+              <p id="condition" class="current__condition">—</p>
+            </div>
+
+            <div class="current__iconWrap">
+              <img id="icon" class="current__icon" alt="" />
+            </div>
+          </div>
+
+          <div class="current__tempRow">
+            <div class="temp">
+              <span id="temp" class="temp__value">—</span>
+              <span id="tempUnit" class="temp__unit">°C</span>
+            </div>
+
+            <div class="meta">
+              <div class="meta__item">
+                <div class="meta__label">Humidity</div>
+                <div id="humidity" class="meta__value">—</div>
+              </div>
+              <div class="meta__item">
+                <div class="meta__label">Wind</div>
+                <div id="wind" class="meta__value">—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider" role="separator" aria-hidden="true"></div>
+
+          <section class="forecast" aria-label="5-day forecast">
+            <div class="forecast__head">
+              <h3 class="forecast__title">5-Day Forecast</h3>
+              <p class="forecast__hint">Daily snapshot around midday</p>
+            </div>
+
+            <div id="forecastGrid" class="forecast__grid"></div>
+          </section>
+        </div>
+
+        <div id="spinner" class="spinner" aria-label="Loading" aria-live="polite" hidden>
+          <div class="spinner__ring" aria-hidden="true"></div>
+          <div class="spinner__text">Fetching latest weather…</div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>
+          Powered by OpenWeather. Add your API key in
+          <code>script.js</code>.
+        </p>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
